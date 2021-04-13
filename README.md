@@ -26,8 +26,8 @@ Parse.Cloud.define('hello1', async req => {
   return 'hello1';
 });
 ```
-2. Open terminal and run `sh restart.sh`
-3. Check new function `curl -X POST -H "X-Parse-Application-Id: APP_ID" -H "Content-Type: application/json" http://localhost:6969/parse/functions/hello1`
+2. Open terminal and run `> sh restart.sh`
+3. Check new function `> curl -X POST -H "X-Parse-Application-Id: APP_ID" -H "Content-Type: application/json" http://localhost:6969/parse/functions/hello1`
 
 ## Todos
 - [ ] Article with more detailed tutorial
