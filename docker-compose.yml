@@ -1,0 +1,61 @@
+version: '3.7'
+
+services:
+  proxy:
+    image: traefik:v2.3
+    command: --api.insecure=true --providers.docker
+    ports:
+      - "6969:80"
+      - "6970:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  parse-server:
+    build: ./server
+    restart: always
+    container_name: parse-server
+    env_file: .env
+    environment: 
+      - APP_DATABASE_URI=mongodb://db:27017/${DB_NAME} # postgres://${DB_USER}:${DB_PASS}@db:5432/${DB_NAME}
+    depends_on:
+      - db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.rule=Host(`localhost`)"
+    volumes:
+      - ./server/cloud:/parse/cloud
+
+  # Regular MongoDB
+  db:
+    image: mongo:latest
+    restart: always
+    volumes:
+      - ./appdata/mongo:/data/db
+    labels:
+      - "traefik.enable=false"
+
+  # Postgis (PostgreSQL) - https://github.com/kartoza/docker-postgis
+  # db:
+  #   image: kartoza/postgis:13.0
+  #   restart: always
+  #   environment:
+  #     # If you need to create multiple database you can add coma separated databases eg gis,data
+  #     - POSTGRES_DB=${DB_NAME}
+  #     - POSTGRES_USER=${DB_USER}
+  #     - POSTGRES_PASS=${DB_PASS}
+  #     # - ALLOW_IP_RANGE=0.0.0.0/0
+  #     # Add extensions you need to be enabled by default in the DB. Default are the five specified below
+  #     - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology,postgis_raster,pgrouting
+  #   volumes:
+  #     - ./appdata/postgis:/var/lib/postgresql
+  #   labels:
+  #     - "traefik.enable=false"
+
+  # Percona Server MongoDB - https://hub.docker.com/r/percona/percona-server-mongodb
+  # db:
+  #   image: percona/percona-server-mongodb:latest
+  #   restart: always
+  #   volumes:
+  #     - ./appdata/percona-mongo:/data/db
+  #   labels:
+  #     - "traefik.enable=false"

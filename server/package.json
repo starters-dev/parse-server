@@ -1,0 +1,15 @@
+{
+  "name": "parse-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "parse": "^2.19.0",
+    "parse-dashboard": "^2.1.0",
+    "parse-server": "^4.5.0"
+  }
+}
