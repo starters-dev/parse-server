@@ -4,9 +4,9 @@ This starter is a minimal setup of [Parse Platform](https://parseplatform.org/) 
 
 ## Deployment
 #### Local
-1. `> mv example.env .env`
-2. `> git clone https://github.com/kanzitelli/parse-server-starter.git`
-3. `> cd parse-server-starter`
+1. `> git clone https://github.com/kanzitelli/parse-server-starter.git`
+2. `> cd parse-server-starter`
+3. `> mv example.env .env`
 4. `> sh build-up.sh`
 5. Open `http://localhost:6969/dashboard` and enter credentials from `.env` (default: `admin` for username and `12345` for password).
 
