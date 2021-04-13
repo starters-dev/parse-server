@@ -1,6 +1,6 @@
 # 🗜 Parse Server Starter
 
-This starter is a minimal setup of [Parse Platform](https://parseplatform.org/) ([Server](https://github.com/parse-community/parse-server) & [Dashboard](https://github.com/parse-community/parse-dashboard)) with a choice of three available database configs: [PostgreSQL](https://www.postgresql.org/) ([Postgis](https://postgis.net/)), [MongoDB](https://www.mongodb.com/) or [Percona Server MongoDB](https://www.percona.com/software/mongodb/percona-server-for-mongodb). All services are run within [Docker Compose](https://docs.docker.com/compose/). [Traefik](https://doc.traefik.io/traefik/) is chosen as a reverse proxy server for its simplicity and great perfomance.
+This starter is a minimal setup of [Parse Platform](https://parseplatform.org/) ([Server](https://github.com/parse-community/parse-server) & [Dashboard](https://github.com/parse-community/parse-dashboard)) with a choice of three DB configs: [PostgreSQL](https://www.postgresql.org/) ([Postgis](https://postgis.net/)), [MongoDB](https://www.mongodb.com/) or [Percona Server MongoDB](https://www.percona.com/software/mongodb/percona-server-for-mongodb). All services are run within [Docker Compose](https://docs.docker.com/compose/). [Traefik](https://doc.traefik.io/traefik/) is chosen as a reverse proxy server for its simplicity and great perfomance.
 
 ## Deployment
 #### Local
