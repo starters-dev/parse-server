@@ -19,6 +19,16 @@ This starter is a minimal setup of [Parse Platform](https://parseplatform.org/) 
 
 In order to have up-to-date running Cloud Functions (when you add a new one and don't want to rebuild whole Docker image), you just need to restart `parse-server` container. You can do it by running `> sh restart.sh`. Or just using Docker extension in VSCode or Docker Desktop app.
 
+Cloud Functions update flow:
+1. Open `server/cloud/main.js` and add simple `hello1` function:
+```
+Parse.Cloud.define('hello1', async req => {
+  return 'hello1';
+});
+```
+2. Open terminal and run `sh restart.sh`
+3. Check new function `curl -X POST -H "X-Parse-Application-Id: APP_ID" -H "Content-Type: application/json" http://localhost:6969/parse/functions/hello1`
+
 ## Todos
 - [ ] Article with more detailed tutorial
 - [ ] Production deployment tutorial (w/ https and [DO](https://digitalocean.com) DNS challenge)
